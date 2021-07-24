@@ -1,0 +1,8 @@
+version: '3'
+services:
+  nginx-cas:
+    build: .
+    image: nginx-cas
+    ports:
+     - "8600:443"
+    #  - "8080:8080"
