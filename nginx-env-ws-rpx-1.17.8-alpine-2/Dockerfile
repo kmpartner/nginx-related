@@ -1,3 +1,5 @@
+# ref https://stackoverflow.com/questions/21866477/nginx-use-environment-variables
+
 FROM nginx:1.17.8-alpine
 COPY ./nginx.conf.template /nginx.conf.template
 
