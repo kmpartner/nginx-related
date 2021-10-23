@@ -1,0 +1,53 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.18.0 (06a2e56)
+  # creationTimestamp: null
+  labels:
+    io.kompose.service: ngi-env-rpx
+  name: ngi-env-rpx-rollout
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: ngi-env-rpx
+  workloadRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: ngi-env-rpx
+  minReadySeconds: 30
+  revisionHistoryLimit: 3
+  # strategy: {}
+  strategy:
+    canary: #Indicates that the rollout should use the Canary strategy
+      maxSurge: "25%"
+      maxUnavailable: 0
+      canaryService: ngi-env-rpx-canary
+      # stableService: ud-rest-gql-api-nodejs-stable
+      stableService: ngi-env-rpx
+
+      # For a normal rolling update, simply specify the canary strategy without steps defined.
+      # The maxSurge and maxUnavailable fields can be specified. If omitted, defaults to 25% and 0
+      # respectively.   https://github.com/argoproj/argo-rollouts/blob/master/examples/rollout-rolling-update.yaml
+      steps:
+        - setWeight: 1
+        - pause: {}
+        - setWeight: 80
+        - pause: {duration: 10}
+        # - setWeight: 20
+        # - pause: {}
+        # - setWeight: 40
+        # - pause: {duration: 10}
+        # - setWeight: 60
+        # - pause: {duration: 10}
+        # - setWeight: 80
+        # - pause: {duration: 10}
+      # steps:
+      # - setWeight: 10
+      # - pause:
+      #     duration: 1h # 1 hour
+      # - setWeight: 20
+      # - pause: {} # pause indefinitely
+
