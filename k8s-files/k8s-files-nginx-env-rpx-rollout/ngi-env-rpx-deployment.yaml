@@ -30,8 +30,8 @@ spec:
           - name: MAX_BODY_SIZE
             value: "1M"
                                       
-        image: kmpartner/ngi-env-rpx:1.17.8-alpine
-        # image: kmpartner/ngi-env-rpx:1.17.8-alpine-2
+        # image: kmpartner/ngi-env-rpx:1.17.8-alpine
+        image: kmpartner/ngi-env-rpx:1.17.8-alpine-2
         ports:
         - containerPort: 443
         # - containerPort: 80
