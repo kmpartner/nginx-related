@@ -15,10 +15,15 @@ http {
             # access_log off;
             # return 200 '${MESSAGE}';
             # add_header Content-Type text/plain;
-            proxy_set_header        Host ${DOLLAR}host;
-            proxy_set_header        X-Real-IP ${DOLLAR}remote_addr;
-            proxy_set_header        X-Forwarded-For ${DOLLAR}proxy_add_x_forwarded_for;
-            proxy_set_header        X-Forwarded-Proto ${DOLLAR}scheme;
+
+            # proxy_set_header        Host ${DOLLAR}host;
+            # proxy_set_header        X-Real-IP ${DOLLAR}remote_addr;
+            # proxy_set_header        X-Forwarded-For ${DOLLAR}proxy_add_x_forwarded_for;
+            # proxy_set_header        X-Forwarded-Proto ${DOLLAR}scheme;
+            proxy_set_header        Host ${HOST};
+            proxy_set_header        X-Real-IP ${X_REAL_IP};
+            proxy_set_header        X-Forwarded-For ${X_FORWARDED_FOR};
+            proxy_set_header        X-Forwarded-Proto ${X_FORWARDED_PROTO};
 
             proxy_pass          http://nodes;
 
@@ -49,10 +54,16 @@ http {
             # access_log off;
             # return 200 '${MESSAGE}';
             # add_header Content-Type text/plain;
-            proxy_set_header        Host ${DOLLAR}host;
-            proxy_set_header        X-Real-IP ${DOLLAR}remote_addr;
-            proxy_set_header        X-Forwarded-For ${DOLLAR}proxy_add_x_forwarded_for;
-            proxy_set_header        X-Forwarded-Proto ${DOLLAR}scheme;
+
+            # proxy_set_header        Host ${DOLLAR}host;
+            # proxy_set_header        X-Real-IP ${DOLLAR}remote_addr;
+            # proxy_set_header        X-Forwarded-For ${DOLLAR}proxy_add_x_forwarded_for;
+            # proxy_set_header        X-Forwarded-Proto ${DOLLAR}scheme;
+            proxy_set_header        Host ${HOST};
+            proxy_set_header        X-Real-IP ${X_REAL_IP};
+            proxy_set_header        X-Forwarded-For ${X_FORWARDED_FOR};
+            proxy_set_header        X-Forwarded-Proto ${X_FORWARDED_PROTO};
+
 
 
             proxy_pass          http://nodes;

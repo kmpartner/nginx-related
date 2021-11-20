@@ -31,7 +31,15 @@ spec:
             value: "1M"
           - name: DOLLAR
             value: "$"
-                                      
+          - name: HOST
+            value: "$host"
+          - name: X_REAL_IP
+            value: "$remote_addr"
+          - name: X_FORWARDED_FOR
+            value: "$proxy_add_x_forwarded_for"
+          - name: X_FORWARDED_PROTO
+            value: "$scheme"
+                        
         # image: kmpartner/ngi-env-rpx:1.17.8-alpine
         # image: kmpartner/ngi-env-rpx:1.17.8-alpine-2
         image: kmpartner/ngi-env-rpx:1.17.8-alpine-3

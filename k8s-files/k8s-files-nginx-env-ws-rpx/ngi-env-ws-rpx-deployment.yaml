@@ -31,10 +31,19 @@ spec:
             value: "5000M"
           - name: DOLLAR
             value: "$"
-                                      
+          - name: HOST
+            value: "$host"
+          - name: X_REAL_IP
+            value: "$remote_addr"
+          - name: X_FORWARDED_FOR
+            value: "$proxy_add_x_forwarded_for"
+          - name: X_FORWARDED_PROTO
+            value: "$scheme"
+
         # image: kmpartner/ngi-env-ws-rpx:1.17.8-alpine
         # image: kmpartner/ngi-env-ws-rpx:1.17.8-alpine-2
-        image: kmpartner/ngi-env-ws-rpx:1.17.8-alpine-3
+        # image: kmpartner/ngi-env-ws-rpx:1.17.8-alpine-3
+        image: kmpartner/ngi-env-rpx:1.17.8-alpine-3
         ports:
         - containerPort: 443
         # - containerPort: 80
@@ -61,6 +70,8 @@ spec:
           requests:
             memory: "1Mi"
             cpu: "1m"
+
+        imagePullPolicy: Always
   
       restartPolicy: Always
       imagePullSecrets:
