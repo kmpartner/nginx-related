@@ -11,6 +11,11 @@ events {
 http {
     server {
         listen       80;
+        
+        # # enable to send more than default size
+        # client_max_body_size 5000M;
+        client_max_body_size ${MAX_BODY_SIZE};
+
         location / {
             # access_log off;
             # return 200 '${MESSAGE}';

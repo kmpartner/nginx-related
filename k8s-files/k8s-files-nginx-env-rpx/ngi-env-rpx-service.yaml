@@ -14,9 +14,9 @@ spec:
   - name: "443"
     port: 443
     targetPort: 443
-  # - name: "8084"
-  #   port: 80
-  #   targetPort: 8084
+  - name: "80"
+    port: 80
+    targetPort: 80
   selector:
     io.kompose.service: ngi-env-rpx
 status:

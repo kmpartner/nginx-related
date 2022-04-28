@@ -27,6 +27,7 @@ spec:
             value: "env smaple"
           - name: API_HOST
             value: "hello-kubernetes-first-8080:8080"
+            # value: "hello-kubernetes-first:80"
           - name: MAX_BODY_SIZE
             value: "1M"
           - name: DOLLAR
@@ -45,7 +46,7 @@ spec:
         image: kmpartner/ngi-env-rpx:1.17.8-alpine-3
         ports:
         - containerPort: 443
-        # - containerPort: 80
+        - containerPort: 80
 
         # readinessProbe:
         #   tcpSocket:
